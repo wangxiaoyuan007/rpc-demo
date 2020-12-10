@@ -1,1 +1,3 @@
-module "rpc-demo"
+module rpc-demo
+
+go 1.14
