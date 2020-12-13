@@ -21,7 +21,8 @@ type Option struct {
 	MagicNumber int
 	CodecType codec.Type
 	ConnectTimeout time.Duration // 0 means no limit
-	HandleTimeout  time.Duration
+	HandleTimeout  time.Duration //
+	NetWork string //默认 “tcp”
 }
 type request struct {
 	h            *codec.Header // header of request
@@ -35,6 +36,7 @@ var DefaultOption = &Option{
 	CodecType:   codec.GobType,
 	ConnectTimeout: time.Second * 10,
 	HandleTimeout: time.Second * 2,
+	NetWork: "tcp",
 }
 
 type Server struct {

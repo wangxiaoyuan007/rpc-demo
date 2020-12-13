@@ -212,12 +212,12 @@ func parseOptions(opts ...*server.Option) (*server.Option, error) {
 	return opt, nil
 }
 
-func dialTimeout(f newClientFunc ,network, adress string,opts ...*server.Option) (client *Client, err error){
+func dialTimeout(f newClientFunc , adress string,opts ...*server.Option) (client *Client, err error){
 	opt,err := parseOptions(opts...)
 	if err != nil {
 		return nil, err
 	}
-	conn, err := net.DialTimeout(network, adress, opt.ConnectTimeout)
+	conn, err := net.DialTimeout(opt.NetWork, adress, opt.ConnectTimeout)
 	if err != nil {
 		return nil, err
 	}
@@ -247,8 +247,8 @@ func dialTimeout(f newClientFunc ,network, adress string,opts ...*server.Option)
 }
 
 
-func Dial(network, adress string,opts ...*server.Option) (client *Client, err error)  {
-	return dialTimeout(NewClient, network,adress,opts...)
+func Dial( adress string,opts ...*server.Option) (client *Client, err error)  {
+	return dialTimeout(NewClient,adress,opts...)
 }
 
 
